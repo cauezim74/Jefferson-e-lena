@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jefferson & Lena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #000000, #1a001f);
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+    }
+
+    .container {
+      background: rgba(20, 0, 30, 0.85);
+      border-radius: 20px;
+      padding: 30px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(160, 60, 255, 0.5);
+    }
+
+
+.foto-casal {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 20px auto;
+
+  border-radius: 20px;
+  border: 3px solid #c77dff;
+  box-shadow: 0 0 18px rgba(199, 125, 255, 0.6);
+
+  overflow: hidden;
+}
+
+.foto-casal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+    h1 {
+      color: #c77dff;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #e0b3ff;
+      margin-bottom: 25px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .box {
+      background: #0d0014;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 10px rgba(180, 80, 255, 0.35);
+    }
+
+    .number {
+      font-size: 26px;
+      color: #e9b6ff;
+      font-weight: bold;
+    }
+
+    .label {
+      font-size: 13px;
+      color: #cdb4db;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #b185db;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+
+    <!-- FOTO QUE TROCA AUTOMATICAMENTE -->
+    <div class="foto-casal">
+  <img id="slideshow" src="foto1.jpeg" alt="Jefferson e Lena">
+</div>
+
+    <h1> Jefferson & Lena 💜</h1>
+    <div class="subtitle">Nosso tempo juntos</div>
+
+    <div class="grid">
+      <div class="box"><div id="years" class="number">0</div><div class="label">Anos</div></div>
+      <div class="box"><div id="months" class="number">0</div><div class="label">Meses</div></div>
+      <div class="box"><div id="days" class="number">0</div><div class="label">Dias</div></div>
+      <div class="box"><div id="hours" class="number">0</div><div class="label">Horas</div></div>
+      <div class="box"><div id="minutes" class="number">0</div><div class="label">Minutos</div></div>
+      <div class="box"><div id="seconds" class="number">0</div><div class="label">Segundos</div></div>
+    </div>
+
+    <footer>
+      💜 Jefferson & Lena • Cada segundo importa
+    </footer>
+
+    <div class="mensagem">
+  <h2>💜 Feliz 18 anos juntos!</h2>
+  <p>
+    Hoje celebramos uma marca que vai muito além do tempo: são 18 anos de amor, cumplicidade e histórias que nos moldaram e nos tornaram mais fortes. 
+    Cada dia vivido lado a lado foi um capítulo único, cheio de risadas, aprendizados, desafios superados e conquistas que só têm sentido porque foram compartilhadas.  
+  </p>
+  <p>
+    Foram 18 anos de mãos dadas, de sonhos construídos e de momentos que se transformaram em memórias eternas. 
+    É impossível resumir em palavras tudo o que vivemos, mas é fácil sentir no coração a gratidão por cada instante.  
+    O que começou como um encontro de almas se transformou em uma jornada de vida, e hoje olhamos para trás com orgulho e para frente com esperança.  
+  </p>
+  <p>
+    Que venham muitos outros anos, novas histórias e aventuras, porque estar ao seu lado é viver a melhor parte da vida.  
+    Nosso amor é a prova de que o tempo não desgasta, mas fortalece; não apaga, mas ilumina; não limita, mas expande.  
+  </p>
+  <p>
+    💜 Jefferson & Lena — 18 anos de amor, e uma eternidade de histórias ainda por escrever.
+  </p>
+</div>
+  </div>
+
+<script>
+  // Data correta: 03/04/2008 (3 de abril de 2008)
+  const startDate = new Date(2008, 3, 3, 0, 0, 0);
+
+  const yearsEl = document.getElementById("years");
+  const monthsEl = document.getElementById("months");
+  const daysEl = document.getElementById("days");
+  const hoursEl = document.getElementById("hours");
+  const minutesEl = document.getElementById("minutes");
+  const secondsEl = document.getElementById("seconds");
+
+  function updateCounter() {
+    const now = new Date();
+
+    let years = now.getFullYear() - startDate.getFullYear();
+    let months = now.getMonth() - startDate.getMonth();
+    let days = now.getDate() - startDate.getDate();
+    let hours = now.getHours() - startDate.getHours();
+    let minutes = now.getMinutes() - startDate.getMinutes();
+    let seconds = now.getSeconds() - startDate.getSeconds();
+
+    if (seconds < 0) {
+      seconds += 60;
+      minutes--;
+    }
+
+    if (minutes < 0) {
+      minutes += 60;
+      hours--;
+    }
+
+    if (hours < 0) {
+      hours += 24;
+      days--;
+    }
+
+    if (days < 0) {
+      const previousMonth = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        0
+      );
+      days += previousMonth.getDate();
+      months--;
+    }
+
+    if (months < 0) {
+      months += 12;
+      years--;
+    }
+
+    yearsEl.textContent = years;
+    monthsEl.textContent = months;
+    daysEl.textContent = days;
+    hoursEl.textContent = hours;
+    minutesEl.textContent = minutes;
+    secondsEl.textContent = seconds;
+  }
+
+  setInterval(updateCounter, 1000);
+  updateCounter();
+</script>
+
+
+<script>
+  /* =====================
+     SLIDESHOW DE FOTOS
+     ===================== */
+ const fotos = [
+  "foto1.jpeg",
+  "foto2.jpeg",
+  "foto3.jpeg",
+  "foto4.jpeg",
+  "foto5.jpeg",
+  "foto6.jpeg"
+]
+
+  let indice = 0;
+  const img = document.getElementById("slideshow");
+
+  setInterval(() => {
+    img.style.opacity = 0;
+
+    setTimeout(() => {
+      indice = (indice + 1) % fotos.length;
+      img.src = fotos[indice];
+      img.style.opacity = 1;
+      }, 500);
+    }, 2500); // troca a cada 3 segundos
+  </script>
+
+<script>
+  function criarCoracao() {
+    const coracao = document.createElement("div");
+    coracao.innerText = "💜";
+    coracao.style.position = "fixed";
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.top = "-20px";
+    coracao.style.fontSize = "16px";
+    coracao.style.color = "#4da3ff";
+    coracao.style.opacity = "0.8";
+    coracao.style.animation = "cair 6s linear";
+
+    document.body.appendChild(coracao);
+
+    setTimeout(() => {
+      coracao.remove();
+    }, 6000);
+  }
+
+  setInterval(criarCoracao, 700);
+</script>
+
+<style>
+  @keyframes cair {
+    to {
+      transform: translateY(110vh);
+      opacity: 0;
+    }
+  }
+</style>
+<audio id="musica" loop>
+  <source src="musica.MP3" type="audio/mpeg">
+</audio>
+
+<script>
+  const musica = document.getElementById("musica");
+  musica.volume = 0.5; // volume inicial
+
+  // Tenta tocar automaticamente
+  musica.play().catch(() => {
+    // Se o navegador bloquear, espera o primeiro clique
+    document.addEventListener("click", () => {
+      musica.play();
+    }, { once: true });
+  });
+</script>
+
+</body>
+</html>
